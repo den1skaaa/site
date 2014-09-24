@@ -1,0 +1,9 @@
+<h1>Edit item</h1>
+
+	<%= form_for @user do |f| %>
+
+	<%= render partial: "fild", locals: { f: f } %>
+
+<p><%= f.submit "Save changes" %></p>
+
+<% end %>

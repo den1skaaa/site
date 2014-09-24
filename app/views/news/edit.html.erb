@@ -1,0 +1,9 @@
+<h1>Редагувати</h1>
+
+	<%= form_for @news do |n| %>
+
+	<%= render partial: "fild", locals: { n: n } %>
+
+<p color="green"><%= n.submit "Додати новину" %></p>
+
+<% end %>

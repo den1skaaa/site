@@ -1,0 +1,26 @@
+<h1>All News</h1>
+
+<h2><%= link_to "Додати новину", new_news_path(:news) %></h2>
+
+<table>
+<tr>
+	<th>News ID:</th>
+	<th>Title:</th>
+	<th>Hedline:</th>
+	<th>Content:</th>
+</tr>
+
+<% @newss.each do |n| %>
+<tr>
+	<td><%= n.id %></td>
+	<td><%= n.title %></td>
+	<td><%= n.hedline %></td>
+	<td><%= n.content %></td>
+	<td><%= link_to "Редагувати", edit_news_path(n) %></td>
+	<td><%= link_to "Видалити", news_path(n), method: :delete, data: { confirm: "Delite user?" } %></td>
+</tr>
+<% end %>
+</table>
+
+
+

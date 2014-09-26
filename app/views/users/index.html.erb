@@ -9,8 +9,9 @@
 	<tr> 
 		<th>User ID</th>
 		<th>Login</th>
-		<th>Password</th>
 		<th>Email</th>
+		<th>Password</th>
+		
 	</tr>
 <% end %>
 
@@ -18,8 +19,8 @@
 	<tr>
 		<td><%= i.id       %></td>
 		<td><%= i.login    %></td>
-		<td><%= i.password %></td>
 		<td><%= i.email    %></td>
+		<td><%= i.password %></td>
 		<td><%= link_to "Edit user", edit_user_path(i) %></td>
 		<td><%= link_to "Delite user", user_path(i), method: :delete, data: { confirm: "Delite user?" } %></td>
 	</tr>

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
 	before_filter :finde_user, only: [ :update, :edit, :destroy ]
+	before_filter :check_if_admin, only: [:create, :new, :destroy, :update, :edit]
 
 	def index
 		@users = User.all	
@@ -48,14 +49,16 @@ class UsersController < ApplicationController
 private
 
 	def user_attributes
-		params.require(:user).permit(:login, :email, :password, :password_confirmation)	
+		params.require(:user).permit(:login, :email, :password,)	
 	end
 
 	def finde_user
-		@user = User.where(id: params[:id]).first
-		#render_404 unless @item	
+		@user = User.where(id: params[:id]).first	
 	end
 
+	def check_if_admin
+		# render_403 unless params[:admin]		
+	end
 end
 
 

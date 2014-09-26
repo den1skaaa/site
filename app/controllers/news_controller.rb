@@ -1,17 +1,13 @@
 class NewsController < ApplicationController
 
-	before_filter :find_news, only: [:edit, :update, :destroy]
-
+	before_filter :find_news, only: [:edit, :update, :destroy, :show]
+	before_filter :check_if_admin, only: [:create, :new, :destroy, :update, :edit]
+	
 	def index
 		@newss = News.all
 	end
 
 	def show
-		if @news = News.where(id: params[:id]).first
-			render "news/show"
-		else
-			render "public/404", status: 404 
-		end
 	end
 
 	def new
@@ -52,5 +48,9 @@ private
 
 	def find_news
 		@news = News.where(id: params[:id]).first
+	end
+
+	def check_if_admin
+		render_403 unless params[:admin]
 	end
 end

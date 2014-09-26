@@ -1,0 +1,18 @@
+<h2>Регістрація</h2>
+
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+  	<p><%= f.input :login, label: "Лоигін:", required: true, autofocus: true %></p>
+    <p><%= f.input :email, label: "Ел.почта:", required: true, autofocus: true %></p>
+    <p><%= f.input :password, label: "Пароль:", required: true %></p>
+    <p><%= f.input :password_confirmation, label: "Підтвердження пароля:", required: true %></p>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Зареєструватись" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

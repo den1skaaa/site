@@ -45,6 +45,10 @@ ActiveRecord::Schema.define(version: 20140924205635) do
   end
 
   create_table "users", force: true do |t|
+    t.boolean  "admin"
+    t.string   "username"
+    t.text     "userinfo"
+    t.binary   "avatar"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "login",                  default: "", null: false

@@ -1,2 +1,12 @@
-<h1>Persons#profile</h1>
-<p>Find me in app/views/persons/profile.html.erb</p>
+<h1>Profile</h1>
+<header align="center">You login as: <%= current_user.email %> | <%= link_to "Logout", destroy_user_session_path %></header>
+
+<%= simple_form_for(current_user, url: session_path(current_user)) do |f| %>
+
+<p><%= f.input :username, label: "Имя пользователя:", size: "150" %> </p>
+<p><%= f.input :userinfo, label: "О себе:"%></p>
+<p><%= f.submit "Save changes" %></p>
+<% end %>
+<%= link_to "Change password", edit_user_password_path(current_user) %>
+
+<!-- не можу додавати інформацію  -->

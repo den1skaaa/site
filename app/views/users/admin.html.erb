@@ -1,0 +1,11 @@
+h2>admin</h2>
+
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+    <p><%= f.input :admin, label: "Ел.почта:", required: true, autofocus: true %></p>
+
+
+  <div class="form-actions">
+    <%= f.button :submit, "Увійти" %>
+  </div>
+<% end %>

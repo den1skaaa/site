@@ -19,11 +19,6 @@ class NewsController < ApplicationController
 
 	def create
 		@news = News.create(news_attr)
-		if @news.errors.empty?
-			redirect_to news_path(@news)
-		else
-			render "edit"
-		end
 	end
 
 	def destroy
@@ -43,14 +38,12 @@ class NewsController < ApplicationController
 private
 	
 	def news_attr
-		params.require(:news).permit(:title, :hedline, :content, :description)		
+		params.require(:news).permit(:title, :hedline, :content, :description, :views)		
 	end
 
 	def find_news
 		@news = News.where(id: params[:id]).first
 	end
 
-	def check_if_admin
-		render_403 unless params[:admin]
-	end
+
 end

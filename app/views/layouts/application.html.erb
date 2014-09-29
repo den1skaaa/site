@@ -8,14 +8,52 @@
 </head>
 <body>
 
-<% if user_signed_in? %>
-    <span>Здравствуйте, <%= current_user.email %></span>
-    <%= link_to 'Вийти', destroy_user_session_path, :method => :delete %>
-<% else %>
-    <%= link_to 'Увійти', new_user_session_path %> | <%= link_to 'Зареєструватись', new_user_registration_path %>
-<% end %>
+<table border="1", width="100%", height="75%">
 
-<%= yield %>
+<header>
+	<td align="center">logo</td>
+		<td align="center">header</td>
+		<td align="center">
+			<% if user_signed_in? %>
+  			  	<span>Здравствуйте, <%= current_user.email %></span>
+  			  	<button><%= link_to 'Profile', user_root_path %></button>
+   				<button><%= link_to 'Вийти', destroy_user_session_path, :method => :delete %></button>
+				<% else %>
+   				<%= link_to 'Увійти', new_user_session_path %> | <%= link_to 'Зареєструватись', new_user_registration_path %>
+			<% end %>
+</header>	
+
+
+
+	<tr height="100%">
+
+		<td width="10%" align="centre" >
+		<h1>site libs</h1>
+		</td>
+
+		<td align="center", valign="top">
+		<%= yield %>
+		</td>
+
+		<td width="15%">
+		some things
+		</td>
+
+	</tr>
+
+</table>
+</body>
+<footer>
+	<nav>
+		<button><a href="#">Про нас</a></td></button>
+		<button><a href="#">Наші контакти</a></button> |  
+		<button><a href=mailto:denis.hudzenk@gmail.com>Написати листа</a></button>
+		<button><a href=callto:cass1dyyy><img src="images/0.jpg"></a></button>
+	</nav>
+</footer>
+
+
+
 
 </body>
 </html>

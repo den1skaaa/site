@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 		@user = User.new
 	end
 
+
 	def show
 		if @user = User.where(id: params[:id]).first
 			render "users/show"
@@ -49,16 +50,13 @@ class UsersController < ApplicationController
 private
 
 	def user_attributes
-		params.require(:user).permit(:login, :email, :password,)	
+		params.require(:user).permit(:login, :email, :password, :admin, :username, :userinfo, :avatar)	
 	end
 
 	def finde_user
 		@user = User.where(id: params[:id]).first	
 	end
 
-	def check_if_admin
-		# render_403 unless params[:admin]		
-	end
 end
 
 

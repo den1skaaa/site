@@ -4,7 +4,7 @@
   <div class="form-inputs">
     <p><%= f.input :email, label: "Ел.почта:", required: true, autofocus: true %></p>
     <p><%= f.input :password, label: "Пароль:", required: true %></p>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+    <p><%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %></p>
   </div>
 
   <div class="form-actions">

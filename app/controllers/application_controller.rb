@@ -12,6 +12,9 @@ class ApplicationController < ActionController::Base
   	render file: "public/403.html", status: 403
   end
 
+  def render_noaccess
+    render file: "public/no_access.html"
+  end
   #def after_sign_in_path_for(resource)
   #current_user_path
   #end
@@ -22,9 +25,9 @@ class ApplicationController < ActionController::Base
 
 
 
-before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
-  protected
+protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :login
@@ -35,11 +38,17 @@ before_action :configure_permitted_parameters, if: :devise_controller?
   end
 
   def check_if_admin
-     if current_user.email == "denis.hudzenko@gmail.com"
-      params[:admin] = true
+    unless admin?
+      flash[:error] = "У Вас нету прав администаратора"
+      redirect_to news_path
+      false
     end
-      render_403 unless params[:admin]       
-  end 
+  end
+    
+    def admin?
+     current_user == "denis.hudzenko@gmail.com"      
+    end
+            
   
 
 end

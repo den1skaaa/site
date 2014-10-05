@@ -5,37 +5,40 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  <style >
+{
+}
+</style>
 </head>
 <body>
-
-<table border="1", width="100%", height="75%">
-
 <header>
-	<td align="center">logo</td>
-		<td align="center">header</td>
-		<td align="center">
+		<strong><a href="http://0.0.0.0:3000/home"><img src="images/home.png>" alt="Home" border="0"></a></strong>
+		<span class="nav_center">header</span>
+			<div class ="registration">
 			<% if user_signed_in? %>
-  			  	<span>Здравствуйте, <%= current_user.email %></span>
-  			  	<button><%= link_to 'Profile', user_root_path %></button>
-   				<button><%= link_to 'Вийти', destroy_user_session_path, :method => :delete %></button>
+  			  	<span >Вы вошли как: <%= current_user.email %></span><br>
+  			  	<strong><%= link_to 'Profile', user_root_path %> |
+   					<%= @logout = link_to 'Вийти', destroy_user_session_path, :method => :delete %>
+   				</strong>
 				<% else %>
-   				<%= link_to 'Увійти', new_user_session_path %> | <%= link_to 'Зареєструватись', new_user_registration_path %>
+   				<strong><%= link_to 'Увійти', new_user_session_path %> | <%= link_to 'Зареєструватись', new_user_registration_path %></strong>
 			<% end %>
+			</div>
 </header>	
 
+<table class="table_home">
 
+	<tr class="tr">
 
-	<tr height="100%">
-
-		<td width="10%" align="centre" >
+		<td class="td_left" >
 		<h1>site libs</h1>
 		</td>
 
-		<td align="center", valign="top">
+		<td class="td_center">
 		<%= yield %>
 		</td>
 
-		<td width="15%">
+		<td class="td_right">
 		some things
 		</td>
 
@@ -45,10 +48,10 @@
 </body>
 <footer>
 	<nav>
-		<button><a href="#">Про нас</a></td></button>
-		<button><a href="#">Наші контакти</a></button> |  
-		<button><a href=mailto:denis.hudzenk@gmail.com>Написати листа</a></button>
-		<button><a href=callto:cass1dyyy><img src="images/0.jpg"></a></button>
+		<strong><a href="home/about">Про нас</a></strong>
+		<strong><a href="#">Наші контакти</a></strong>|  
+		<strong><a href=mailto:denis.hudzenk@gmail.com>Написати листа</a></strong>
+		<strong><a href=callto:cass1dyyy><img src="images/0.jpg"></a></strong>
 	</nav>
 </footer>
 

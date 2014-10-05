@@ -1,12 +1,20 @@
 <h1>Profile</h1>
-<header align="center">You login as: <%= current_user.email %> | <%= link_to "Logout", destroy_user_session_path %></header>
+<h4>You login as: <%= current_user.email %> | <%= link_to 'Вийти', destroy_user_session_path, :method => :delete%></h4>
 
 <%= simple_form_for(current_user, url: session_path(current_user)) do |f| %>
 
-<p><%= f.input :username, label: "Имя пользователя:", size: "150" %> </p>
-<p><%= f.input :userinfo, label: "О себе:"%></p>
-<p><%= f.submit "Save changes" %></p>
+<div class="form_inputs">
+<%= f.input :username, label: "Имя пользователя:", width: 150 %><br>
+<%= f.input :userinfo, label: "О себе:"%><br>
+</div>
+
+<section class="form_actions">
+<%= f.submit "Save changes" %>
+</section> >
+
+
 <% end %>
+
 <%= link_to "Change password", edit_user_password_path(current_user) %>
 
 <!-- не можу додавати інформацію  -->

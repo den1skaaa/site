@@ -25,21 +25,7 @@ class UsersController < ApplicationController
 	end
 
 	def update
-		@user.update_attributes(user_attributes)
-		if @user.errors.empty?
-			redirect_to user_path(@user)
-		else
-			render 'edit'
-		end
-	end
-
-	def create
-		@user = User.create(user_attributes)
-		if @user.errors.empty?
-			redirect_to user_path(@user)
-		else
-			render "edit"
-		end
+		@user.update_attributes(params[:username, :userinfo, :avatar])
 	end
 
 	def destroy

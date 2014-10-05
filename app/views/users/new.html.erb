@@ -1,9 +1,13 @@
 <h1>Create new user</h1>
 
 	<%= form_for @user do |f| %>
+<div class="form_inputs">
+<%= render partial: "fild", locals: { f: f } %>
+</div>
+	
 
-	<%= render partial: "fild", locals: { f: f } %>
-
+<div class="form_actions">
 <p><%= f.submit "Create user" %></p>
+</div>
 
 <% end %>

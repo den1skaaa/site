@@ -3,9 +3,10 @@ Site::Application.routes.draw do
 
   devise_for :users
   mount Ckeditor::Engine => '/ckeditor'
-  resources :users
-  resources :news
   resources :home
+  # get 'home', to: 'home#index'
+  resources :users
+  resources :news 
   get 'persons/profile', as: 'user_root'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

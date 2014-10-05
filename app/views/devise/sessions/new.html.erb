@@ -1,13 +1,13 @@
 <h2>Sign in</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <p><%= f.input :email, label: "Ел.почта:", required: true, autofocus: true %></p>
-    <p><%= f.input :password, label: "Пароль:", required: true %></p>
-    <p><%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %></p>
+  <div class="form_inputs">
+    <%= f.input :email, label: "Ел.почта:", required: true, autofocus: true %>
+    <%= f.input :password, label: "Пароль:", required: true %></p>
+    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
   </div>
 
-  <div class="form-actions">
+  <div class="form_actions">
     <%= f.button :submit, "Увійти" %>
   </div>
 <% end %>

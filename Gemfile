@@ -44,6 +44,7 @@ gem 'mini_magick'
 
 gem 'rspec'
 gem 'factory_girl'
+gem 'will_paginate'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

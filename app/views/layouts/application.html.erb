@@ -1,40 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Site</title>
+  <title><%= full_title(yield(:title)) %></title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
-  <style >
-{
-}
-</style>
 </head>
 <body>
-<header>
-		<strong><a href="http://0.0.0.0:3000/home"><img src="images/home.png>" alt="Home" border="0"></a></strong>
-		<span class="nav_center">header</span>
-			<div class ="registration">
-			<% if user_signed_in? %>
-  			  	<span >Вы вошли как: <%= current_user.email %></span><br>
-  			  	<strong><%= link_to 'Profile', user_root_path %> |
-   					<%= @logout = link_to 'Вийти', destroy_user_session_path, :method => :delete %>
-   				</strong>
-				<% else %>
-   				<strong><%= link_to 'Увійти', new_user_session_path %> | <%= link_to 'Зареєструватись', new_user_registration_path %></strong>
-			<% end %>
-			</div>
-</header>	
+<%= render partial: 'layouts/header'%>
 
 <table class="table_home">
 
 	<tr class="tr">
 
 		<td class="td_left" >
-		<h1>site libs</h1>
+		<%= render partial: "layouts/left_nav" %>
 		</td>
 
 		<td class="td_center">
+		<% if flash[:error] %>
+		<p id="flash_error" valign="top"><%=flash[:error]%></p>
+		<% end %>
 		<%= yield %>
 		</td>
 
@@ -45,18 +31,8 @@
 	</tr>
 
 </table>
-</body>
-<footer>
-	<nav>
-		<strong><a href="home/about">Про нас</a></strong>
-		<strong><a href="#">Наші контакти</a></strong>|  
-		<strong><a href=mailto:denis.hudzenk@gmail.com>Написати листа</a></strong>
-		<strong><a href=callto:cass1dyyy><img src="images/0.jpg"></a></strong>
-	</nav>
-</footer>
 
-
-
+<%= render partial: 'layouts/footer' %>
 
 </body>
 </html>

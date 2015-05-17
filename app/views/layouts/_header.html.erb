@@ -1,0 +1,14 @@
+<header>
+		<%= link_to image_tag(alt: "Головна", src: "images/logo.png", size: 50), root_path %>
+		<span class="nav_center">header</span>
+			<div class ="registration">
+			<% if user_signed_in? %>
+  			  	<span style="color: #19FF19" >Вы вошли как: <%= current_user.email %></span><br>
+  			  	<strong><%= link_to 'Profile', user_root_path %> |
+   					<%= @logout = link_to 'Вийти', destroy_user_session_path, :method => :delete %>
+   				</strong>
+				<% else %>
+   				<strong><%= link_to 'Увійти', new_user_session_path %> | <%= link_to 'Зареєструватись', new_user_registration_path %></strong>
+			<% end %>
+			</div>
+</header>	

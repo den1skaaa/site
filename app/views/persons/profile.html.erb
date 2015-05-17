@@ -1,3 +1,4 @@
+<% provide(:title, 'Profile') %>
 <h1>Profile</h1>
 <h4>You login as: <%= current_user.email %> | <%= link_to 'Вийти', destroy_user_session_path, :method => :delete%></h4>
 
@@ -11,7 +12,6 @@
 <section class="form_actions">
 <%= f.submit "Save changes" %>
 </section> >
-
 
 <% end %>
 

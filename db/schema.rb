@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140924205635) do
+ActiveRecord::Schema.define(version: 20141016201742) do
 
   create_table "ckeditor_assets", force: true do |t|
     t.string   "data_file_name",               null: false
@@ -28,6 +28,13 @@ ActiveRecord::Schema.define(version: 20140924205635) do
 
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable"
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type"
+
+  create_table "coments", force: true do |t|
+    t.integer  "user_id"
+    t.string   "coment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "homes", force: true do |t|
     t.datetime "created_at"
@@ -65,7 +72,6 @@ ActiveRecord::Schema.define(version: 20140924205635) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["login"], name: "index_users_on_login", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

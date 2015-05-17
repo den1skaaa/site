@@ -1,15 +1,24 @@
 <h1>All News</h1>
 
-<h2><%= link_to "Додати новину", new_news_path(:news) %></h2>
+<% if user_signed_in? and current_user.admin %>
 
+		<h2><%= link_to "Додати новину", new_news_path(:news) %></h2>
 
+<% end %>
 
 <% @newss.each do |n| %>
 
+<p>Title:<%= n.title %></p>
+<p>Hedline:<%= n.hedline %></p>
+<p>Content:<%= n.content %></p>
 
-	<p>Title:<%= n.title %>		<%= link_to "Редагувати", edit_news_path(n) %></p>
-	<p>Hedline:<%= n.hedline %>		<%= link_to "Видалити", news_path(n), method: :delete, data: { confirm: "Delite user?" } %></p>
-	<p>Content:<%= n.content %></p>
+<% if user_signed_in? and current_user.admin %>
+
+		<%= link_to "Редагувати", edit_news_path(n) %>
+		<%= link_to "Видалити", news_path(n), method: :delete, data: { confirm: "Delite user?" } %>
+
+<% end %>
+	
 	
 	
 <% end %>

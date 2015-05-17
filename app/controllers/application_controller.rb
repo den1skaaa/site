@@ -37,18 +37,23 @@ protected
     devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:login, :email) }
   end
 
-  def check_if_admin
-    unless admin?
-      flash[:error] = "У Вас нету прав администаратора"
-      redirect_to news_path
-      false
+  #def check_if_admin
+  
+     # unless current_user.admin
+      # render news_index_path
+       #flash[:error] = "У Вас нету прав администаратора"
+      #end
+
+ # end
+
+  def check_if_login
+    if user_signed_in? and current_user.admin
+      true
+    else
+       redirect_to root_path
+       flash[:error] = "У Вас нету прав администаратора"
+       false
     end
   end
-    
-    def admin?
-     current_user == "denis.hudzenko@gmail.com"      
-    end
-            
-  
 
 end
